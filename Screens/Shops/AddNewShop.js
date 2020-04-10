@@ -3,13 +3,34 @@ import { View, Text, StyleSheet, ScrollView, Image, TextInput, TouchableOpacity,
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Actions } from 'react-native-router-flux';
+import { Header, LearnMoreLinks,Colors,DebugInstructions,ReloadInstructions,} from 'react-native/Libraries/NewAppScreen';
+import ImagePicker from 'react-native-image-picker';
 
 import NextButton from '../../Components/Common/NextButton';
+
+
+const options = {
+  title: 'Select Avatar',
+  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
 
 export default class AddNewShop extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = { 
+            filepath: {
+                data: '',
+                uri: ''
+            },
+            fileData: '',
+            fileUri: '',
+
+            imgforstoring:[],
+        };
     }
 
 static navigationOptions = {
@@ -32,6 +53,64 @@ static navigationOptions = {
         </View>
     ),  
 }
+
+  chooseImage = () => {
+    let options = {
+      title: 'Select Image',
+      // customButtons: [
+      //   { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
+      // ],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.showImagePicker(options, (response) => {
+    //   console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+        // alert(response.customButton);
+      } else {
+        const source = { uri: response.uri };
+
+        // You can also display the image using data:
+        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+        // alert(JSON.stringify(response));s
+        // console.log('response', JSON.stringify(response));
+        this.setState({
+          filePath: response,
+          fileData: response.data,
+          fileUri: response.uri
+        });
+      }
+    });
+  }
+
+
+renderFileUri() {
+    if (this.state.fileUri) {
+      return <Image
+        source={{ uri: this.state.fileUri }}
+        style={styles.imagesFrompHOTO}
+      />
+    var newImgArr = this.state.imgforstoring.push('this.state.fileUri');
+       this.setState({ imgforstoring: newImgArr })
+    //   this.setState({
+    //       imgforstoring: [this.state.fileUri]
+    //   })
+      console.log('images ', imgforstoring);
+    } else {
+      return <Image  styles={styles.imgStyle}
+        source= {require('../../Assets/Icons/Add_Images.png')}
+      />
+    }
+  }
+
     render() {
         return (
         <View>
@@ -143,15 +222,22 @@ static navigationOptions = {
                         showsVerticalScrollIndicator={false}
                     >
                         
-                        <View style={styles.imgBG}>
-                            <Image  styles={styles.imgStyle}
-                                source = {require('../../Assets/Icons/Add_Images.png')}/>
-                        </View>
+                        <TouchableOpacity 
+                            //onPress={() =>Actions.camera()}
+                            >
+                            <View style={styles.imgBG}>
+                                <Image  styles={styles.imgStyle}
+                                    source = {require('../../Assets/Icons/Add_Images.png')}/>
+                            </View>
+                        </TouchableOpacity>
 
-                        <View style={styles.imgBG}>
-                            <Image  styles={styles.imgStyle}
-                                source = {require('../../Assets/Icons/Add_Images.png')}/>
-                        </View>
+                        <TouchableOpacity onPress={this.chooseImage}>
+                            <View style={styles.imgBG}>
+                                 {this.renderFileUri()}
+                                {/* <Image  styles={styles.imgStyle}
+                                    source = {require('../../Assets/Icons/Add_Images.png')}/> */}
+                            </View>
+                        </TouchableOpacity>
 
                         <View style={styles.imgBG}>
                             <Image  styles={styles.imgStyle}
@@ -335,4 +421,13 @@ const styles = StyleSheet.create({
         marginLeft:wp('2'), 
         marginRight:wp('2'),
     },
+
+    imagesFrompHOTO: {
+        height:hp('18'), 
+        width:wp('40'),
+        borderRadius:wp('2'), 
+        justifyContent:'center',
+        alignItems:'center',
+        // marginLeft:wp('2'),
+  },
 });

@@ -6,6 +6,35 @@ import Dash from 'react-native-dash';
 import { Thumbnail, List, ListItem, Separator } from 'native-base';
 import Dialog, { DialogContent, DialogFooter, DialogButton, DialogTitle, SlideAnimation} from 'react-native-popup-dialog';
 import { Actions } from 'react-native-router-flux';
+import { FloatingAction } from "react-native-floating-action";
+
+const actions = [
+  {
+    text: "Create New Order",
+    color: 'transperent',
+    name: "bt_create", 
+    position: 4,
+  },
+  {
+    text: "Accept Payment",
+    color: 'transperent',
+    name: "bt_payment", 
+    position: 3,
+  },
+  {
+    text: "Take A Survey",
+    color: 'transperent',
+    name: "bt_survey", 
+    position: 2,
+  },
+  {
+    text: "Audit Assets",
+    color: 'transperent',
+    name: "bt_assets", 
+    position: 1,
+  },
+
+];
 
 
 export default class Assets extends Component {
@@ -16,27 +45,6 @@ constructor(props) {
     };
 }
 
-static navigationOptions = {
-    // title: 'Order Preview',
-    // color: 'white',
-    // headerStyle: {
-    //     backgroundColor: '#221818'
-    // },
-    // headerTintColor: '#fff',
-    // headerTitleStyle: {
-    //     color: '#fff'
-    // },
-     headerLeft: (
-        <View style={{flexDirection:"row", alignItems:'center',justifyContent:'center',alignSelf:'center',}}>
-            <TouchableOpacity   onPress={() =>Actions.Shops() }>  
-                <Image  style={{marginLeft:wp('4'),}}
-                    source = {require('../../Assets/Icons/Back_White.png')}
-                />
-            </TouchableOpacity>
-            
-        </View>
-     )       
-}
 
 filterPopUp =  () => {
 const { navigation } = this.props;
@@ -345,6 +353,26 @@ render() {
                 
             <View style={{height:hp('10')}}></View>
             </ScrollView>
+
+                <FloatingAction
+                    color='#a10d59'
+                    actions={actions}
+                    buttonSize= {hp('9')}
+                    distanceToEdge = {10}
+                    // floatingIcon= {require('../../Assets/Icons/Floating.png')}
+                    // iconWidth={wp(20)}
+                    // iconHeight={hp(16)}
+                    iconWidth={wp(5)}
+                    iconHeight={hp(3)}
+                    shadow= 'null'
+                    overlayColor= '#221818'
+                    showBackground= {true}
+                    onPressItem={name => {
+                        // if(name = "bt_create"){ 
+                                Actions.CreateNewOrderFirst()
+                        // }
+                    }}
+                />
          </ImageBackground>
         </View> 
         );
@@ -396,6 +424,7 @@ const styles = StyleSheet.create({
         height:hp('4'),
         width:wp('8'), 
         marginRight:wp('5'),
+        marginBottom:hp('1'),
     },
 
     dashLineContainer: {

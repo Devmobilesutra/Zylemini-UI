@@ -22,7 +22,6 @@ import AddNewOutlet from './Screens/CreateNewOrder/AddNewOutlet';
 import Shops from './Screens/Shops/Shops';
 import ShopCardView from './Screens/Shops/ShopCardView';
 import ShopDetail from './Screens/Shops/ShopDetail';
-import TabBar from './Screens/Shops/TabBar'
 
 import Info from './Screens/Shops/Info';
 import Orders from './Screens/Shops/Orders';
@@ -31,6 +30,10 @@ import Assets from './Screens/Shops/Assets';
 import Surveys from './Screens/Shops/Surveys';
 import Schemes from './Screens/Shops/Schemes';
 import AddNewShop from './Screens/Shops/AddNewShop';
+
+import TabBar from './Screens/Shops/TabBar';
+
+import camera from './Screens/Shops/camera';
 
 
 
@@ -57,23 +60,21 @@ export default class RouteMain extends Component{
                     <Scene key="Shops" component={Shops} title="Shops"/>
                     <Scene key="AddNewShop" component={AddNewShop} title="Add New Party"/>
                     <Scene key="ShopCardView" component={ShopCardView} title="Shops"/>
-                    <Scene key="ShopDetail" component={ShopDetail}  />
 
+                    
+                    <Scene key="camera" component={camera}  />
 
-                    {/* <Scene key='TabBar'  tabs={true} component={TabBar} title='TabBar'  hideNavBar={true}/> */}
-                    {/* <Scene key='Info' tabs={true} component={Info} title='INFO'  hideNavBar={true}/>
-                    <Scene key='Orders'  tabs={true} component={Orders}  title='ORDERS'  hideNavBar={true}/>
-                    <Scene key='Payments' tabs={true} component={Payments}  title='PAYMENTS'  hideNavBar={true}/>
-                    <Scene key='Assets' tabs={true} component={Assets}  title='ASSETS'  hideNavBar={true}/>
-                    <Scene key='Surveys' tabs={true}  component={Surveys}  title='SURVEYS'  hideNavBar={true}/>
-                    <Scene key='Schemes' tabs={true}  component={Schemes}  title='SCHEMES'  hideNavBar={true}/> */}
+                    {/* <Scene key="ShopDetail" component={ShopDetail}  /> */}
 
                     <Drawer
                           hideNavBar
                           key="drawerMenu"
                           contentComponent={SideMenu}
-                          drawerWidth={wp('70')}
+                          drawerWidth={wp('80')}
                           drawerPosition="left"
+                          tapToClose={true}
+                          openDrawerOffset={0.2}
+                        //   drawerToggle={true}
                     >
                       <Scene
                           key="Dashboard"
@@ -89,27 +90,27 @@ export default class RouteMain extends Component{
                       />
                     </Drawer>
 
-                <Scene key='Tabbar' tabs={true} tabBarStyle={styles.tabBar} default='Main'  
+                <Scene key='TabBar' tabs={true} tabBarStyle={styles.tabBar} default='Main'  
+                            hideNavBar={false}
                             swipeEnabled
                             scrollEnabled
                             showLabel={true}
-                            tabBarPosition='top'
-                            tabBarStyle={{ backgroundColor: '#221818', }}
+                            tabBarPosition='top'  
+                            tabStyle={{width:wp('21.1')}}
                             labelStyle={{ fontFamily:'Proxima Nova',width:wp(15), height:hp('3'),}}
                             indicatorStyle={{ backgroundColor: '#CC1167', height:hp('0.8') }}
                             activeBackgroundColor="white"
-                            //navBar={MediaNavBar}
                             // lazy
+                            navBar={ShopDetail}
                             headerMode="screen"
                             wrap={false}
-                            hideNavBar={true}
                 >
-                    <Scene key='Info' initial={true} component={Info} title='INFO'  hideNavBar={true}/>
-                    <Scene key='Orders'  component={Orders}  title='ORDERS'  hideNavBar={true}/>
-                    <Scene key='Payments'  component={Payments}  title='PAYMENTS'  hideNavBar={true}/>
+                    <Scene key='Info' initial={true} component={Info} title='INFO'  hideNavBar={true} />
+                    <Scene key='Orders'  component={Orders}  title='ORDERS'  hideNavBar={true}  />
+                    <Scene key='Payments'  component={Payments}  title='PAYMENTS'  hideNavBar={true} />
                     <Scene key='Assets'  component={Assets}  title='ASSETS'  hideNavBar={true}/>
-                    <Scene key='Surveys'  component={Surveys}  title='SURVEYS'  hideNavBar={true}/>
-                    <Scene key='Schemes'  component={Schemes}  title='SCHEMES'  hideNavBar={true}/>
+                    <Scene key='Surveys'  component={Surveys}  title='SURVEYS'  hideNavBar={true} />
+                    <Scene key='Schemes'  component={Schemes}  title='SCHEMES' hideNavBar={true} />
                 </Scene>
              
                             
@@ -131,12 +132,10 @@ barButtonTextStyle:{
 barButtonIconStyle:{
     tintColor:'#FFFFFF'
 },
+
 tabBar: {
-height: 40,
-borderTopColor: 'darkgrey',
-borderTopWidth: 1,
-opacity: 0.98,
-justifyContent:'space-between'
+// marginTop:hp('30'),
+backgroundColor: '#221818',
 }
 })
 

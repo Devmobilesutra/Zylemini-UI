@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet, View, Text, ImageBackground, TouchableOpacity, ScrollView, Image} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import { Router, Scene, Stack, Drawer, Tabs } from 'react-native-router-flux';
+import { Router, Scene, Stack, Drawer, Tabs, Lightbox } from 'react-native-router-flux';
 import { Actions } from 'react-native-router-flux';
 
 import Info from './Info';
@@ -18,18 +18,33 @@ export default class TabBar extends Component {
     //     super(props);
     //     this.state = {  };
     // }
+
+    static navigationOptions = {
+
+     headerLeft: (
+        <View style={{flexDirection:"row", alignItems:'center',justifyContent:'center',alignSelf:'center',}}>
+            <TouchableOpacity   onPress={() =>Actions.Shops() }>  
+                <Image  style={{marginLeft:wp('4'),}}
+                    source = {require('../../Assets/Icons/Back_White.png')}
+                />
+            </TouchableOpacity>
+            
+        </View>
+     )       
+}
+
     render() {
         return (
             // <View>
         <Router>
+         {/* <Lightbox> */}
             {/* <Stack key="Tabbar"  panHandlers={null} > */}
               {/* <Stack> */}
-             <Scene key='Tabbar' tabs={true} tabBarStyle={styles.tabBar} default='Main'  
+             <Scene key='TabBar' tabs={true} tabBarStyle={styles.tabBar} default='Main'  
                             swipeEnabled
                             scrollEnabled
                             showLabel={true}
                             tabBarPosition='top'
-                            tabBarStyle={{ backgroundColor: '#221818', }}
                             tabStyle={{width:wp('21.1')}}
                             labelStyle={{ fontFamily:'Proxima Nova',width:wp(15), height:hp('3'),}}
                             indicatorStyle={{ backgroundColor: '#CC1167', height:hp('0.8') }}
@@ -39,15 +54,20 @@ export default class TabBar extends Component {
                             headerMode="screen"
                             wrap={false}
                             hideNavBar={true}
+                           
              >
-            <Scene key='Info' initial={true} component={Info} title='INFO'  hideNavBar={true}/>
-            <Scene key='Orders'  component={Orders}  title='ORDERS'  hideNavBar={true}/>
-            <Scene key='Payments'  component={Payments}  title='PAYMENTS'  hideNavBar={true}/>
-            <Scene key='Assets'  component={Assets}  title='ASSETS'  hideNavBar={true}/>
-            <Scene key='Surveys'  component={Surveys}  title='SURVEYS'  hideNavBar={true}/>
-            <Scene key='Schemes'  component={Schemes}  title='SCHEMES'  hideNavBar={true}/>
-             </Scene>
+             {/* <Stack> */}
+            <Scene key='Info' initial={true} component={Info} title='INFO' onBack={()=>{Actions.Shops()}} back={true}  />
+            <Scene key='Orders' component={Orders}  title='ORDERS'   onBack={()=>{Actions.Shops()}} back={true} />
+            <Scene key='Payments' component={Payments}  title='PAYMENTS'  onBack={()=>{Actions.Shops()}} back={true} />
+            <Scene key='Assets' component={Assets}  title='ASSETS' onBack={()=>{Actions.Shops()}} back={true}  />
+            <Scene key='Surveys' component={Surveys}  title='SURVEYS'  onBack={()=>{Actions.Shops()}} back={true} />
+            <Scene key='Schemes' component={Schemes}  title='SCHEMES' onBack={()=>{Actions.Shops()}} back={true} />
+             {/* </Stack> */}
+            </Scene>
+            
             {/* </Stack> */}
+             {/* </Lightbox> */}
                </Router>
             //   </View>
         // <View>
@@ -61,6 +81,7 @@ export default class TabBar extends Component {
 const styles = StyleSheet.create({
 tabBar: {
 height: 50,
+backgroundColor: '#221818',
 // borderTopColor: 'darkgrey',
 borderTopWidth: 1,
 opacity: 0.98,

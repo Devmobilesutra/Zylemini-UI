@@ -8,7 +8,7 @@ import { Card } from 'react-native-elements';
 import { FAB, Searchbar} from 'react-native-paper';
 import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";
 import { Thumbnail, List, ListItem, Separator } from 'native-base';
-import {Calendar } from 'react-native-calendars';
+// import {Calendar } from 'react-native-calendars';
 import { Actions } from 'react-native-router-flux';
 
 import NextButton from '../../Components/Common/NextButton';

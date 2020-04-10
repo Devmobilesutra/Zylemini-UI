@@ -165,6 +165,7 @@ searchComponent(){
               listStyle = {styles.listStyle}
               //data to show in suggestion
               data={films.length === 1 && comp(query, films[0].title) ? [] : films}
+              //data={((films.length === 1 && comp(query, films[0].title)) || this.state.clicked) ? [] : films}
               //default value if you want to set something in input
               defaultValue={query}
               /*onchange of the text changing the state of the query which will trigger

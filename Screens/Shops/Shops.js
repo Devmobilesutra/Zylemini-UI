@@ -7,8 +7,6 @@ import { Dropdown } from 'react-native-material-dropdown';
 import Dash from 'react-native-dash';
 import { FloatingAction } from "react-native-floating-action";
 
-
-
 const data = [{
     value: 'Route 1',
     }, {
@@ -73,58 +71,21 @@ static navigationOptions = {
 
             <Image  style={{marginRight:hp('2'), marginBottom:hp('0.5'), height:hp('4'), width:wp('6'),}}
                 source = {require('../../Assets/Icons/SearchHeader.png')}
-            />
+            />   
+        </View>
+    ),
+    
+  headerLeft: (
+        <View style={{flexDirection:"row", alignItems:'center',justifyContent:'center',alignSelf:'center',}}>
+            <TouchableOpacity   onPress={() =>Actions.drawerMenu() }>  
+                <Image  style={{marginLeft:wp('4'),}}
+                    source = {require('../../Assets/Icons/Back_White.png')}
+                />
+            </TouchableOpacity>
             
         </View>
  )
 }
-
-// CardOrListView(){
-//     if(this.state.cardView == false)
-//     {
-//      return(
-//         <View style={{marginTop:hp('3')}}>
-//             <View style={{alignItems:'center' ,flexDirection:'row',backgroundColor: '#FFFFFF', 
-//                             borderColor: '#E6DFDF', justifyContent:'center', alignSelf:'center',
-//                             borderRadius: wp('2'), height: hp('18'),  width: wp('90'),borderWidth: hp('0.3'), 
-//                             marginHorizontal: wp('4')}}>
-
-//                 <View style={styles.imageContainer}>
-//                         <Image style={styles.imageStyles} 
-//                                 source = {require('../../Assets/Icons/shopImg.png')}/>
-//                 </View>
-//                 <View style={styles.shopDetailsContainer}>
-//                         <Text style={styles.shopNameTextStyle}>
-//                                 Shop Name
-//                         </Text >
-//                         <Text style={styles.shopAddressTextStyle}>
-//                                 Kothrud, Pune
-//                         </Text>
-//                         <Text style={styles.shopDistanceTextStyle}>
-//                                 1 Km Away     ETA 5Mins
-//                         </Text>
-//                 </View>
-//                 <View style={{ flex:1, alignItems: 'flex-end', flexDirection:'row', marginLeft:wp('5')}}>
-//                         <Text style={{color:'#3955CB', fontFamily:'Proxima Nova', fontSize:RFValue(15),}}>
-//                             Call
-//                         </Text>
-//                 </View>
-//             </View>
-//         </View>
-//         );
-//     }
-
-//     else
-//     {
-//      return(
-//             <View>
-//                 <Text>Hiii</Text>
-//             </View>
-//      );
-
-//     }
-// }
-
 
 
 render() {
@@ -201,7 +162,7 @@ render() {
                 {this.CardOrListView()}
             </View> */}
             <View style={styles.shopListMainContainer}>
-              <TouchableOpacity onPress={() =>Actions.ShopDetail()}>
+              <TouchableOpacity onPress={() =>Actions.Info()}>
                 <View style={styles.shopDetailBackStyle}>
 
                     <View style={styles.imageContainer}>

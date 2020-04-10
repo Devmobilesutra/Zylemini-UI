@@ -4,6 +4,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { Icon } from 'react-native-elements';
 import { FloatingAction } from "react-native-floating-action";
 import { Actions } from 'react-native-router-flux';
+import { FAB} from 'react-native-paper';
 
 import TodaysRoute  from './TodaysRoute';
 import Today from './Today';
@@ -25,7 +26,9 @@ const actions = [
 export default class Dashboard extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = { 
+            open: false,
+         };
     }
 
 static navigationOptions =  ({ navigation }) => ({
@@ -55,11 +58,13 @@ static navigationOptions =  ({ navigation }) => ({
             />
             </TouchableOpacity>
         </View>
-    )
-        
+    )      
 });
 
+  _onStateChange = ({ open }) => this.setState({ open });
+
     render() {
+         const { open } = this.state;
         return (
         
             <View style = {{ flex: 10 }}>
@@ -84,21 +89,43 @@ static navigationOptions =  ({ navigation }) => ({
             </ScrollView>
            {/*Floating button....always at the end of view and not in scrollview*/}
             <FloatingAction
+                open={open}
                 color='#a10d59'
                 actions={actions}
                 buttonSize= {hp('9.5')}
-                // floatingIcon= {require('../../Assets/Icons/Floating.png')}
-                // iconWidth={wp(20)}
-                // iconHeight={hp(16)}
-                iconWidth={wp(5)}
-                iconHeight={hp(3)}
+                floatingIcon= {require('../../Assets/Icons/Floating.png')}
+                iconWidth={wp(20)}
+                iconHeight={hp(16)}
+                // iconWidth={wp(5)}
+                // iconHeight={hp(3)}
                 shadow= 'null'
                 overlayColor= '#221818'
                 showBackground= {true}
+                onStateChange={this._onStateChange}
                 onPressItem={name => {
                     Actions.CreateNewOrderFirst()
                 }}
             />
+
+                {/* FAB Right Bottom (Orange) */}
+                 {/* <FAB.Group
+                    open={open}
+                    icon={open ? 'plus' : 'menu'}
+
+                    actions={[
+                    { icon: 'add', onPress: () => console.log('Pressed add') },
+                    { icon: 'star', label: 'Star', onPress: () => console.log('Pressed star')},
+                    { icon: 'email', label: 'Email', onPress: () => console.log('Pressed email') },
+                    { icon: 'bell', label: 'Remind', onPress: () => console.log('Pressed notifications') },
+                    ]}
+                    onStateChange={this._onStateChange}
+                    onPress={() => {
+                    if (open) {
+                        
+                        // do something if the speed dial is open
+                    }
+                    }}
+                /> */}
              </ImageBackground>
         </View>
        

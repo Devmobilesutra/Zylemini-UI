@@ -3,6 +3,15 @@ import {StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity, Scroll
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Dash from 'react-native-dash';
 import ModalDropdown from 'react-native-modal-dropdown';
+import { Dropdown } from 'react-native-material-dropdown';
+
+
+const data = [{
+    value: 'Box',
+    }, {
+    value: 'Unit',
+    }, 
+];
 
 
 export default class EditInlineOnCreateNewOrder extends Component {
@@ -77,20 +86,32 @@ export default class EditInlineOnCreateNewOrder extends Component {
             </View>
 
             <View style= {styles.boxUnitDropContainer}>
-                <ModalDropdown
+                {/* <ModalDropdown
                     showsVerticalScrollIndicator= {false}
                     onSelect={(index, value) => { this.setState({ selected: value }) }}
                     options={['Box', 'Unit']}
                     defaultValue= 'Box'
-                    dropdownTextStyle={styles.dropDownTextStyle}/*Style here*/
+                    dropdownTextStyle={styles.dropDownTextStyle} 
                     textStyle={styles.dropDownTextsStyle}
                     dropdownStyle={styles.dropdownStyle}
                     style={styles.dropDownStyless}
-                />
-                    {/* <Image
-                            style={{marginLeft:wp('18'), marginTop:hp('-5')}}
-                            source={require('../../Assets/Icons/right_arrow.png')}
-                        /> */}
+                /> */}
+                 <Dropdown
+                        // value={'Select'}
+                        placeholder= "Box"
+                        itemCount = {2} 
+                        containerStyle={styles.dropDownContainer}
+                        pickerStyle={{width:wp('30')}}                        //28-03
+                        rippleCentered={true}
+                        itemColor = '#ADA2A2'
+                        // fontSize = '10'
+                        inputContainerStyle={{ borderBottomColor: 'transparent' }}
+                        data = {data}
+                        dropdownPosition={-2}
+                        dropdownOffset={{top:8, left:18,}}
+                        rippleOpacity={0}
+                        // style={styles.dropDownStyless}
+                    />
             </View>
                     
             <View style= {styles.rateTextBoxContainer}>
@@ -136,20 +157,33 @@ export default class EditInlineOnCreateNewOrder extends Component {
                 </View>
 
                 <View style= {styles.discountDropContainer}>
-                   <ModalDropdown
+                   {/* <ModalDropdown
                         showsVerticalScrollIndicator= {false}
                         onSelect={(index, value) => { this.setState({ selected: value }) }}
                         options={['Box', 'Unit']}
                         defaultValue= ' % Percent'
-                        dropdownTextStyle={styles.discountDropdownTextStyle}/*Style here*/
+                        dropdownTextStyle={styles.discountDropdownTextStyle}/ 
                         textStyle={styles.discountDropTextStyle}
                         dropdownStyle={styles.discountDropDownStyle}
                         style={styles.discountDropStyle}
+                    /> */}
+
+                    <Dropdown
+                        // value={'Select'}
+                        placeholder= "% Percent"
+                        itemCount = {2} 
+                        containerStyle={styles.dropDownContainerDiscount}
+                        pickerStyle={{width:wp('30')}}                        //28-03
+                        rippleCentered={true}
+                        itemColor = '#ADA2A2'
+                        // fontSize = '10'
+                        inputContainerStyle={{ borderBottomColor: 'transparent' }}
+                        data = {data}
+                        dropdownPosition={-2}
+                        dropdownOffset={{top:8, left:18,}}
+                        rippleOpacity={0}
                     />
-                    {/* <Image
-                            style={{marginLeft:wp('18'), marginTop:hp('-5')}}
-                            source={require('../../Assets/Icons/right_arrow.png')}
-                        /> */}
+
                 </View>
                     
                 <View style= {styles.discountTextBoxContainer}>
@@ -329,27 +363,44 @@ const styles = StyleSheet.create({
     alignItems:'flex-start', 
  },
 
- dropDownTextStyle: { 
-    backgroundColor: '#fff', 
-    fontSize: wp('3'), 
-    color:'black', 
- },
+ dropDownContainer : {
+      borderColor: '#E6DFDF', 
+      borderRadius: wp('1'), 
+      width: wp('30'), 
+      height: hp('5.5'),
+      marginTop: hp('0'), 
+      marginHorizontal: wp('1'),
+      backgroundColor: '#FFFFFF',
+      paddingHorizontal:hp('1'), 
+      alignSelf:'center',
+      flex: 1, 
+      marginVertical: 10, 
+      borderWidth:wp('0.5'), 
+      marginRight:wp('8'),
+       borderWidth:hp('0.15'), 
+  },
 
- dropDownTextsStyle: { 
-    fontSize: wp('3'), 
-    // color:'gunmetal', 
-    alignSelf: 'flex-start', 
-    marginLeft: wp('3'), 
- },
+//  dropDownTextStyle: { 
+//     backgroundColor: '#fff', 
+//     fontSize: wp('3'), 
+//     color:'black', 
+//  },
 
- dropdownStyle: { 
-    flex: 1, 
-    width: wp('30'), 
-    height:hp('11'), 
-    marginVertical: 10, 
-    borderWidth:wp('0.5'), 
-    borderColor: '#E6DFDF', 
- },
+//  dropDownTextsStyle: { 
+//     fontSize: wp('3'), 
+//     // color:'gunmetal', 
+//     alignSelf: 'flex-start', 
+//     marginLeft: wp('3'), 
+//  },
+
+//  dropdownStyle: { 
+//     flex: 1, 
+//     width: wp('30'), 
+//     height:hp('11'), 
+//     marginVertical: 10, 
+//     borderWidth:wp('0.5'), 
+//     borderColor: '#E6DFDF', 
+//  },
 
  dropDownStyless: { 
     flex: 1, 
@@ -457,27 +508,45 @@ const styles = StyleSheet.create({
       alignItems:'flex-start', 
  },
 
- discountDropdownTextStyle: { 
-      backgroundColor: '#fff',
-      fontSize: wp('3'), 
-      color:'black',
- },
-
- discountDropTextStyle: {
-      fontSize: wp('3'), 
-    //   color:'gunmetal', 
-      alignSelf: 'flex-start',
-      marginLeft: wp('3'),
- },
-
- discountDropDownStyle: { 
+ 
+ dropDownContainerDiscount : {
       flex: 1, 
-      width: wp('30'), 
-      height:hp('11'), 
+      width: wp('30'),  
+      borderColor: '#E6DFDF', 
+      borderRadius: wp('1'), 
+      height: hp('5.5'),
+      marginTop: hp('0'), 
+      marginHorizontal: wp('1'),
+      backgroundColor: '#FFFFFF',
+      paddingHorizontal:hp('1'), 
+      alignSelf:'center',
       marginVertical: 10, 
       borderWidth:wp('0.5'), 
-      borderColor: '#E6DFDF', 
- },
+      marginRight:wp('6.5'),
+      borderWidth:hp('0.15'), 
+  },
+
+//  discountDropdownTextStyle: { 
+//       backgroundColor: '#fff',
+//       fontSize: wp('3'), 
+//       color:'black',
+//  },
+
+//  discountDropTextStyle: {
+//       fontSize: wp('3'), 
+//     //   color:'gunmetal', 
+//       alignSelf: 'flex-start',
+//       marginLeft: wp('3'),
+//  },
+
+//  discountDropDownStyle: { 
+//       flex: 1, 
+//       width: wp('30'), 
+//       height:hp('11'), 
+//       marginVertical: 10, 
+//       borderWidth:wp('0.5'), 
+//       borderColor: '#E6DFDF', 
+//  },
 
  discountDropStyle: { 
       flex: 1, 
@@ -599,6 +668,7 @@ const styles = StyleSheet.create({
 
 
 
+  
 
 
 })

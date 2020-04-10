@@ -26,7 +26,7 @@ const data = [{
 
 const actions = [
   {
-    text: "Create New Order",
+    text: "Add New Shop",
     color: 'transperent',
     name: "bt_accessibility", 
     position: 1,
@@ -72,7 +72,18 @@ static navigationOptions = {
             />
             
         </View>
- )
+    ),
+    
+    headerLeft: (
+            <View style={{flexDirection:"row", alignItems:'center',justifyContent:'center',alignSelf:'center',}}>
+                <TouchableOpacity   onPress={() =>Actions.drawerMenu() }>  
+                    <Image  style={{marginLeft:wp('4'),}}
+                        source = {require('../../Assets/Icons/Back_White.png')}
+                    />
+                </TouchableOpacity>
+                
+            </View>
+    )
 }
 render() {
     return (
@@ -144,49 +155,48 @@ render() {
 
             {/* Shop LIST Card VIEW */}
             <View style={styles.shopListMainContainer}>
+            <TouchableOpacity onPress={() =>Actions.Info()}>
                 <View style={styles.shopListBackContainer}>
                     <View style={styles.shopNameAddContainer}>
                         <Text style={styles.shopNameTextStyle}>
                             Shop Name
                         </Text>
                     </View>
-
                     <View style={styles.shopNameAddContainer}>
                         <Text style={styles.shopDistanceTextStyle}>
                             Kothrud             1Km Away            ETA 5 mins
                         </Text>
                     </View>
-
                     <View style={styles.imgBackContainer}>
                         <Image 
                             style={styles.imageStyles} 
                                 source = {require('../../Assets/Icons/Shop_card_watermark.png')}/>
                     </View>
-
-                <View style= {styles.NCMContainer}>
-                    <View style= {styles.navContainer}>
-                        <TouchableOpacity>
-                            <Text  style = {styles.navTextStyle}>
+                    <View style= {styles.NCMContainer}>
+                        <View style= {styles.navContainer}>
+                            <TouchableOpacity>
+                                <Text  style = {styles.navTextStyle}>
                                     Navigate
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style= {styles.callContainer}>
-                        <TouchableOpacity>
-                            <Text  style = {styles.callTextStyle}>
-                                    Call
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style= {styles.msgContainer}>
-                        <TouchableOpacity>
-                            <Text  style = {styles.msgTextStyle}>
-                                    Message
-                            </Text>
-                        </TouchableOpacity>
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style= {styles.callContainer}>
+                            <TouchableOpacity>
+                                <Text  style = {styles.callTextStyle}>
+                                        Call
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style= {styles.msgContainer}>
+                            <TouchableOpacity>
+                                <Text  style = {styles.msgTextStyle}>
+                                        Message
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         </View>
              
         </ScrollView>
@@ -195,7 +205,6 @@ render() {
              <FloatingAction
                 color='#a10d59'
                 actions={actions}
-                distanceToEdge={ wp('0'), hp('0') }
                 buttonSize= {hp('9.5')}
                 // floatingIcon= {require('../../Assets/Icons/Floating.png')}
                 // iconWidth={wp(20)}
@@ -206,7 +215,10 @@ render() {
                 overlayColor= '#221818'
                 showBackground= {true}
                 onPressItem={name => {
-                    Actions.CreateNewOrderFirst()
+                    // Actions.CreateNewOrderFirst()
+                    if(name = "bt_accessibility"){ 
+                            Actions.AddNewShop()
+                    }
                 }}
             />
             </ImageBackground>
