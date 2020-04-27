@@ -74,6 +74,16 @@ export default class SideMenu extends Component {
                                 </Text> 
                             </View>
                         </TouchableOpacity>
+
+                         <TouchableOpacity onPress={() => Actions.TabBarSurveys()}>                
+                            <View style={styles.drawerNmaeImgContainer2}>
+                                <Image style={styles.drawerLabelImgStyle2}
+                                    source={require('./Assets/Icons/Shop_sidebar.png')}/>
+                                <Text style={styles.drawerLabelStyle2}>
+                                        Surveys
+                                </Text> 
+                            </View>
+                        </TouchableOpacity>
                     </ScrollView>
                 </View>
 

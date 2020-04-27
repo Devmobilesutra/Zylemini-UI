@@ -39,6 +39,8 @@ target 'zyleminiPlus' do
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
+  pod 'react-native-camera-kit', :path => '../node_modules/react-native-camera-kit'
+
   target 'zyleminiPlusTests' do
     inherit! :search_paths
     # Pods for testing

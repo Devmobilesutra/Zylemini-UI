@@ -5,7 +5,6 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Actions } from 'react-native-router-flux';
 import { Dropdown } from 'react-native-material-dropdown';
 
-
 const data = [{
     value: 'Product 1',
     }, {
@@ -13,7 +12,7 @@ const data = [{
     }, 
 ];
 
-export default class Manual extends Component {
+export default class manualForDiscard extends Component {
 constructor(props) {
     super(props);
     this.state = { 
@@ -117,7 +116,7 @@ render() {
             <View>
                 {/* CONFIRM Button */}
                 <View style={styles.confirmButtonMainContainer}>
-                    <TouchableOpacity  onPress={() => Actions.AuditAssetStep2()} >
+                    <TouchableOpacity  onPress={() => Actions.DiscardAssetStep2()} >
                         <View style={styles.confirmButtonInnerContainer}>
                             <Text style={styles.confirmTextStyle}>
                                     CONFIRM

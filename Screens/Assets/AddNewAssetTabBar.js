@@ -1,11 +1,11 @@
-
 import React, { Component } from 'react';
 import {StyleSheet, View, Text, ImageBackground, TouchableOpacity, ScrollView, Image} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Actions } from 'react-native-router-flux';
 
-export default class AuditExistingAssets extends Component {
+
+export default class AddNewAssetTabBar extends Component {
 constructor(props) {
     super(props);
     this.state = {  };
@@ -120,9 +120,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Proxima Nova', 
     marginTop:hp('1'),
-  },
-
-
-  
+  }, 
 
 });

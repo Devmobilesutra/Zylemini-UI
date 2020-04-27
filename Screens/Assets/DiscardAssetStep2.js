@@ -8,16 +8,16 @@ import Dash from 'react-native-dash';
 import { ActionSheet,Root } from 'native-base';
 import ImagePicker from 'react-native-image-crop-picker';
 
-export default class AuditAssetStep2 extends Component {
+export default class DiscardAssetStep2 extends Component {
 constructor(props) {
     super(props);
     this.state = { 
-           fileList: [],
+        fileList: [],
     };
 }
 
 static navigationOptions = {
-  title: 'Audit Asset : Step 2/3',
+  title: 'Discard Asset : Step 2/3',
   color: 'white',
     headerStyle: {
         backgroundColor: '#221818'
@@ -119,9 +119,10 @@ showPhoto() {
         )
 }
 
+
 render() {
     return (
-    <View>
+        <View>
         <ImageBackground
                 source={require('../../Assets/Icons/android_BG.png')}
                  style={{height:hp('89'),width:wp('100'), resizeMode: 'cover',  justifyContent: 'center',}}
@@ -168,7 +169,7 @@ render() {
                     />
                 </View>
 
-                 {/* MANUFACTURED BY*/}
+                {/* MANUFACTURED BY*/}
                 <View style= {styles.MBMainContainer}>
                     <View style= {styles.MBColContainer}>
                         <Text  style = {styles.MBLabelStyle}>
@@ -189,7 +190,7 @@ render() {
                     />
                 </View>
 
-                {/* MODEL */}
+                 {/* MODEL */}
                 <View style= {styles.ModelMainContainer}>
                     <View style= {styles.modelColContainer}>
                         <Text  style = {styles.modelLabelStyle}>
@@ -252,7 +253,7 @@ render() {
                     />
                 </View>
 
-                 {/* Allocated To */}
+                {/* Allocated To */}
                 <View style={styles.ALTMainContainer}>
                     <View style= {styles.ALToLabelContainer}>
                         <Text  style = {styles.ALToLabelStyle}>
@@ -278,13 +279,13 @@ render() {
                     />
                 </View>
 
-                <View>
+                 <View>
                     <View style={styles.OODMainContainer}>
                         <Text style={styles.OODTextStyle}>
                             ADD PICTURES
                         </Text>
                     </View>
-                     <View style={styles.addPicturesContainer}>
+                    <View style={styles.addPicturesContainer}>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
@@ -305,31 +306,33 @@ render() {
                         </ScrollView>
                     </View>  
                 </View> 
-                          
+
             </View>
             <View style={{marginTop:hp('5')}}></View>
         </ScrollView>
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={() => Actions.AuditAssetStep3()}>
-                    <View style={styles.confirmButtonBG}>
-                        <Text style={styles.confirmButtonTextStyle}>
+            {/* Confirm Cancel Button */}
+            <View style={styles.ButtonsMainContainer}>
+                <TouchableOpacity onPress={() => Actions.DiscardAssetStep3()}>
+                    <View style={styles.ConfirmBGStyle}>
+                        <Text style={styles.ConfirmTextStyle}>
                             CONFIRM ASSET DETAILS
                         </Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity >
-                    <View style={styles.cancelButtonBG}>
-                        <Text style={styles.cancelButtonTextStyle}>
+                    <View style={styles.CancelBGStyle}>
+                        <Text style={styles.CancelTextStyle}>
                             CANCEL
                         </Text>
                     </View>
                 </TouchableOpacity>
             </View>
         </ImageBackground>
-    </View>
+        </View>
     );
 }
 }
+
 
 const styles = StyleSheet.create({
 
@@ -408,10 +411,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
-
     dashLineContainer: {
         // flex:1, 
-        marginTop:hp('3'), 
+        marginTop:hp('2.5'), 
         alignContent: 'center', 
         alignItems: 'center',
     },
@@ -422,7 +424,7 @@ const styles = StyleSheet.create({
         color: '#ADA2A2',
     },
 
-     MBMainContainer:{ 
+    MBMainContainer:{ 
         flex:1, 
         flexDirection:'row',   
         marginTop:hp('2.5'), 
@@ -632,6 +634,8 @@ const styles = StyleSheet.create({
         fontFamily: 'Proxima Nova',
     },
 
+    
+
     OODMainContainer: {
         flex:1,
     },
@@ -671,40 +675,5 @@ const styles = StyleSheet.create({
         marginRight:wp('2'),
         marginTop:hp('1'),
     },
-
-    buttonContainer:{
-        flexDirection:'column', 
-        alignItems:'center',
-    },
-
-    confirmButtonBG:{   
-        backgroundColor:'#221818', 
-        height:hp('8'), 
-        width:wp('90'), 
-        borderRadius:wp('2'), 
-        alignItems:'center',
-        justifyContent:'center',
-    },
-
-    confirmButtonTextStyle:{ 
-        color: '#FFFFFF', 
-        fontSize:RFValue(14), 
-        fontWeight: 'bold',
-        fontFamily: 'Proxima Nova',
-    },
-
-    cancelButtonBG:{
-        alignItems:'center',
-        justifyContent:'center',
-        marginVertical:hp('3'),
-    },
-
-    cancelButtonTextStyle:{ 
-        color: 'black', 
-        fontSize:RFValue(14), 
-        fontWeight: 'bold',
-        fontFamily: 'Proxima Nova',
-    },
-
 
 });

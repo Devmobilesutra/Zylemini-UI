@@ -9,22 +9,22 @@ import { ActionSheet,Root } from 'native-base';
 import ImagePicker from 'react-native-image-crop-picker';
 
 const data = [{
-    value: 'Shop 1',
+    value: 'Asset 1',
     }, {
-    value: 'Shop 2',
+    value: 'Asset 2',
     }, 
 ];
 
-
-export default class AuditAssetStep3 extends Component {
+export default class AddNewAssetStep2 extends Component {
 constructor(props) {
     super(props);
     this.state = { 
         fileList: [],
     };
 }
+
 static navigationOptions = {
-  title: 'Audit Asset : Step 3/3',
+  title: 'Add Asset : Step 3/3',
   color: 'white',
     headerStyle: {
         backgroundColor: '#221818'
@@ -37,7 +37,7 @@ static navigationOptions = {
 
     headerLeft: (
         <View style={{flexDirection:"row", alignItems:'center',justifyContent:'center',alignSelf:'center',}}>
-            <TouchableOpacity   onPress={() =>Actions.AuditAssetStep2() }>  
+            <TouchableOpacity   onPress={() =>Actions.ScanQRCodeForAddAsset() }>  
                 <Image  style={{marginLeft:wp('4'),}}
                     source = {require('../../Assets/Icons/Back_White.png')}
                 />
@@ -147,65 +147,6 @@ render() {
                     showsVerticalScrollIndicator={false}
         >
             <View>
-                
-                {/* Header */}
-                <View style = {styles.container}>
-                    <View style= {styles.assetTypeContainer}>
-                        <Text  style = {styles.assetTypeLabelStyle}>
-                            ASSET TYPE
-                        </Text>
-                        <Text  style = {styles.assetTypesTextStyle} >
-                            Refrigerator
-                        </Text>
-                    </View>
-
-                    <View style= {styles.modelContainer}>
-                        <Text  style = {styles.modelLabelStyle}>
-                            MODEL
-                        </Text>
-                        <Text  style = {styles.modelNoStyle}>
-                            MD Cool 15455  
-                        </Text>
-                    </View>
-                </View>
-
-                {/* Add Photos */}
-                <View>
-                    <View style={{ flex:1,}}>
-                        <Text style={styles.addPicturesTextStyle}>
-                            ADD PICTURES
-                        </Text>
-                    </View>
-                    <View style={styles.picturesContainerStyle}>
-                        <ScrollView
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                            showsVerticalScrollIndicator={false}
-                        >
-                            <View style={styles.addIconContainer}>
-                                <TouchableOpacity 
-                                            // onPress={() =>Actions.camera()}
-                                            onPress={this.onClickAddImage}
-                                            >
-                                    <Image  style={styles.addIconStyle}
-                                                    source = {require('../../Assets/Icons/Add_Images.png')}/>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={{flexDirection:'column'}}>
-                                {this.showPhoto()}
-                            </View>
-                        </ScrollView>
-                    </View>  
-                </View> 
-
-                 {/* Dash Line */}
-                <View style={styles.dashLineContainer}>
-                    <Dash style={styles.dashLineStyle}
-                        dashLength = {2}
-                        dashColor = '#ADA2A2'
-                    />
-                </View>
-
                 {/* Current Location */}
                 <View style={{marginTop:hp('1')}}>
                     <View style={styles.nameMainContainer}>
@@ -254,31 +195,91 @@ render() {
                     </View>
                 </View>
 
-                {/* Remark */}
-                <View>
-                    <View style={styles.remarkMainContainer}>
-                        <Text style= {styles.remarkTextStyle} >
-                            REMARKS
+                {/* CONTACT PERSON */}
+                <View style={{marginTop:hp('1')}}>
+                    <View style={styles.nameMainContainer}>
+                        <Text style={styles.nameTextStyle}>
+                            CONTACT PERSON
                         </Text>
                     </View>
-                    <View style={styles.remarkTextViewContainer}>
-                        <TextInput
-                            //multiline= {}
-                            style={styles.remarkTextInputStyle}
-                            // onChangeText={text => onChangeText(text)}
 
-                        />
+                    <View style={styles.OODTextBoxMainContainer}>
+                        <TextInput
+                                //multiline= {}
+                                placeholder= "Type Full Name"
+                                style={styles.OODTextBoxSelfContainer}
+                                // onChangeText={text => onChangeText(text)}
+                                // value={Type Here}
+                            />
                     </View>
                 </View>
 
-            <View style={{marginTop:hp('10')}}></View>
+                {/* CONTACT NUMBER */}
+                <View style={{marginTop:hp('1')}}>
+                    <View style={styles.nameMainContainer}>
+                        <Text style={styles.nameTextStyle}>
+                            CONTACT NUMBER
+                        </Text>
+                    </View>
+
+                    <View style={styles.OODTextBoxMainContainer}>
+                        <TextInput
+                                //multiline= {}
+                                placeholder= "Type Number"
+                                style={styles.OODTextBoxSelfContainer}
+                                keyboardType= "numeric"
+                                // onChangeText={text => onChangeText(text)}
+                                // value={Type Here}
+                            />
+                    </View>
+                </View>
+
+                {/* Dash Line */}
+                <View style={styles.dashLineContainer}>
+                    <Dash style={styles.dashLineStyle}
+                        dashLength = {2}
+                        dashColor = '#ADA2A2'
+                    />
+                </View>
+
+
+                {/* Add Photos */}
+                <View>
+                    <View style={{ flex:1,}}>
+                        <Text style={styles.addPhotosTextStyle}>
+                            ADD PHOTOS
+                        </Text>
+                    </View>
+                    <View style={styles.photosContainer}>
+                        <ScrollView
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                            showsVerticalScrollIndicator={false}
+                        >
+                            <View style={styles.addIconContainer}>
+                                <TouchableOpacity 
+                                            // onPress={() =>Actions.camera()}
+                                            onPress={this.onClickAddImage}
+                                            >
+                                    <Image  style={styles.addIconStyle}
+                                                source = {require('../../Assets/Icons/Add_Images.png')}/>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={{flexDirection:'column'}}>
+                                {this.showPhoto()}
+                            </View>
+                        </ScrollView>
+                    </View>  
+                </View> 
+
+            <View style={{marginTop:hp('5')}}></View>
             </View>
         </ScrollView>
             <View style={styles.buttonsContainer}>
                     <TouchableOpacity >
-                        <View style={styles.submitButtonBG}>
-                            <Text style={styles.submitButtonTextStyle}>
-                                SUBMIT
+                        <View style={styles.AddButtonBG}>
+                            <Text style={styles.AddButtonTextStyle}>
+                                ADD NEW ASSET
                             </Text>
                         </View>
                     </TouchableOpacity>
@@ -352,32 +353,6 @@ const styles = StyleSheet.create({
         marginBottom:hp('2') ,
     },
 
-    addPicturesTextStyle:{ 
-        color:'#796A6A', 
-        fontSize:RFValue(13), 
-        fontFamily: 'Proxima Nova',
-        fontWeight: 'bold', 
-        marginLeft: wp('6'),
-        marginTop:hp('3'),
-    },
-
-    picturesContainerStyle:{
-        flexDirection:'row', 
-        marginTop:hp('2'),
-        marginLeft:wp('4'),
-    },
-
-    addIconContainer:{
-        flexDirection:'column', 
-        marginTop:hp('2'),
-    },
-
-    addIconStyle:{
-        height:hp('7'), 
-        width:wp('12'),
-    },
-    
-    
     dashLineContainer: {
         // flex:1, 
         marginTop:hp('3'), 
@@ -402,8 +377,6 @@ const styles = StyleSheet.create({
         height:hp('1'), 
         color: '#ADA2A2',
     },
-
-
 
     nameMainContainer: {
         flex:1,
@@ -435,11 +408,52 @@ const styles = StyleSheet.create({
         padding: -1,
     },
 
+    OODTextBoxMainContainer:{
+        flex:1, 
+        marginTop:hp('1.5')
+    },
+
+    OODTextBoxSelfContainer:{ 
+        height: hp('9'), 
+        width:wp('90'), 
+        borderColor: '#E6DFDF', 
+        borderWidth: 1,
+        borderRadius:wp('2') , 
+        backgroundColor: '#ffffff',
+        alignSelf:'center', 
+        padding: 15,
+    },
+
+    dashLineContainer: {
+        // flex:1, 
+        marginTop:hp('4'), 
+        alignContent: 'center', 
+        alignItems: 'center',
+    },
+
+    dashLineStyle: {
+        width:wp('88'), 
+        height:hp('1'), 
+        color: '#ADA2A2',
+    },
+
+
     remarkMainContainer: {
         flex:1, 
         alignItems:'flex-start', 
         marginHorizontal: hp('3'),
-        marginVertical: wp('8'),   
+        marginVertical: wp('8'),
+    },
+
+    imagesFrompHOTO: {
+        height:hp('18'), 
+        width:wp('40'),
+        borderRadius:wp('2'), 
+        justifyContent:'center',
+        alignItems:'center',
+        marginLeft:wp('1'),
+        marginRight:wp('1'),
+        marginTop:hp('1'),
     },
 
     remarkTextStyle: {
@@ -467,12 +481,37 @@ const styles = StyleSheet.create({
         padding:5,
     },
 
-    buttonsContainer:{
+    addPhotosTextStyle:{ 
+        color:'#796A6A', 
+        fontSize:RFValue(13), 
+        fontFamily: 'Proxima Nova',
+        fontWeight: 'bold', 
+        marginLeft: wp('6'),
+        marginTop:hp('3'),
+    },
+
+    photosContainer:{
+        flexDirection:'row', 
+        marginTop:hp('2'),
+        marginLeft:wp('4'),
+    },
+
+    addIconContainer:{
+        flexDirection:'column', 
+        marginTop:hp('2'),
+    },
+
+    addIconStyle:{
+        height:hp('7'), 
+        width:wp('12'),
+    },
+
+    buttonsContainer: {
         flexDirection:'column', 
         alignItems:'center',
     },
 
-    submitButtonBG:{   
+    AddButtonBG:{
         backgroundColor:'#46BE50', 
         height:hp('8'), 
         width:wp('90'), 
@@ -481,8 +520,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
 
-    submitButtonTextStyle:{ 
-        color: '#FFFFFF', 
+    AddButtonTextStyle:{ 
+        color: '#ffffff', 
         fontSize:RFValue(14), 
         fontWeight: 'bold',
         fontFamily: 'Proxima Nova',

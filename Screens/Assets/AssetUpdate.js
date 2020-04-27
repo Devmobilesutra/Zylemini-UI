@@ -55,6 +55,17 @@ nextNavigation =  () => {
             Actions.ScanQRCode()
         );
     }
+    if(this.state.value == 3) {
+        return(
+            Actions.ScanQRCodeForDiscard()
+        );
+    }
+    if(this.state.value == 1) {
+        return(
+            Actions.ScanQRCodeForAddAsset()
+        );
+    }
+    
 }
 
 

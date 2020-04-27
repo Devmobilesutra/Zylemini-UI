@@ -15,16 +15,14 @@ const data = [{
     }, 
 ];
 
-
-export default class AuditAssetStep3 extends Component {
+export default class DiscardAssetStep3 extends Component {
 constructor(props) {
     super(props);
-    this.state = { 
-        fileList: [],
-    };
+    this.state = {  };
 }
+
 static navigationOptions = {
-  title: 'Audit Asset : Step 3/3',
+  title: 'Discard Asset : Step 3/3',
   color: 'white',
     headerStyle: {
         backgroundColor: '#221818'
@@ -37,7 +35,7 @@ static navigationOptions = {
 
     headerLeft: (
         <View style={{flexDirection:"row", alignItems:'center',justifyContent:'center',alignSelf:'center',}}>
-            <TouchableOpacity   onPress={() =>Actions.AuditAssetStep2() }>  
+            <TouchableOpacity   onPress={() =>Actions.Manual() }>  
                 <Image  style={{marginLeft:wp('4'),}}
                     source = {require('../../Assets/Icons/Back_White.png')}
                 />
@@ -136,6 +134,7 @@ showPhoto() {
         )
 }
 
+
 render() {
     return (
     <View>
@@ -176,7 +175,7 @@ render() {
                             ADD PICTURES
                         </Text>
                     </View>
-                    <View style={styles.picturesContainerStyle}>
+                    <View style={styles.addPictureContainer}>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
@@ -230,11 +229,35 @@ render() {
                     </View>
                 </View>
 
-                {/* Current Location */}
+                {/* CONDITION */}
                 <View style={{marginTop:hp('1')}}>
                     <View style={styles.nameMainContainer}>
                         <Text style={styles.nameTextStyle}>
                             CONDITION
+                        </Text>
+                    </View>
+                    <View style={styles.nameTextBoxMainContainer}>
+                        <Dropdown
+                        placeholder= 'Select'
+                        itemCount = {4} 
+                        containerStyle={styles.dropDownContainer}
+                        pickerStyle={{width:wp('89.2')}}
+                        rippleCentered={true}
+                        itemColor = '#ADA2A2'
+                        inputContainerStyle={{ borderBottomColor: 'transparent' }}
+                        data = {data}
+                        dropdownPosition={-3.4}
+                        dropdownOffset={{top:20, left:18,}}
+                        rippleOpacity={0}
+                    />
+                    </View>
+                </View>
+
+                 {/*  REASON */}
+                <View style={{marginTop:hp('1')}}>
+                    <View style={styles.nameMainContainer}>
+                        <Text style={styles.nameTextStyle}>
+                            REASON
                         </Text>
                     </View>
                     <View style={styles.nameTextBoxMainContainer}>
@@ -274,16 +297,16 @@ render() {
             <View style={{marginTop:hp('10')}}></View>
             </View>
         </ScrollView>
-            <View style={styles.buttonsContainer}>
+            <View style={styles.buttonsMainContainer}>
                     <TouchableOpacity >
-                        <View style={styles.submitButtonBG}>
-                            <Text style={styles.submitButtonTextStyle}>
-                                SUBMIT
+                        <View style={styles.reqToDiscardButtonContainer}>
+                            <Text style={styles.reqToDiscardButtonTextStyle}>
+                                REQUEST TO DISCARD
                             </Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity >
-                        <View style={styles.cancelButtonBG}>
+                        <View style={styles.cancelButtonContainer}>
                             <Text style={styles.cancelButtonTextStyle}>
                                 CANCEL
                             </Text>
@@ -361,7 +384,7 @@ const styles = StyleSheet.create({
         marginTop:hp('3'),
     },
 
-    picturesContainerStyle:{
+    addPictureContainer:{
         flexDirection:'row', 
         marginTop:hp('2'),
         marginLeft:wp('4'),
@@ -435,45 +458,46 @@ const styles = StyleSheet.create({
         padding: -1,
     },
 
-    remarkMainContainer: {
-        flex:1, 
-        alignItems:'flex-start', 
-        marginHorizontal: hp('3'),
-        marginVertical: wp('8'),   
-    },
+      remarkMainContainer: {
+    flex:1, 
+    alignItems:'flex-start', 
+    marginHorizontal: hp('3'),
+    marginVertical: wp('8'),
+    
+  },
 
-    remarkTextStyle: {
-        color:'#8C7878',
-        fontWeight: 'bold',
-        fontFamily: 'Proxima Nova',
-        fontSize: wp('3%'), 
-    },
+  remarkTextStyle: {
+    color:'#8C7878',
+    fontWeight: 'bold',
+    fontFamily: 'Proxima Nova',
+    fontSize: wp('3%'), 
+  },
 
-    remarkTextViewContainer: {
-        flex:1, 
-        marginVertical:hp('-3'), 
-        marginHorizontal:wp('5'),
-        alignSelf:'center',
-        // padding:1,
-    },
+  remarkTextViewContainer: {
+    flex:1, 
+    marginVertical:hp('-3'), 
+    marginHorizontal:wp('5'),
+    alignSelf:'center',
+    // padding:1,
+  },
 
-    remarkTextInputStyle: { 
-        height: hp('15'),
-        width:wp('88'), 
-        borderColor: '#E6DFDF', 
-        borderWidth: 1, 
-        borderRadius:wp('2') , 
-        backgroundColor: '#ffffff',
-        padding:5,
-    },
+  remarkTextInputStyle: { 
+    height: hp('15'),
+    width:wp('88'), 
+    borderColor: '#E6DFDF', 
+    borderWidth: 1, 
+    borderRadius:wp('2') , 
+    backgroundColor: '#ffffff',
+    padding:5,
+  },
 
-    buttonsContainer:{
+    buttonsMainContainer:{
         flexDirection:'column', 
         alignItems:'center',
     },
 
-    submitButtonBG:{   
-        backgroundColor:'#46BE50', 
+    reqToDiscardButtonContainer:{   
+        backgroundColor:'red', 
         height:hp('8'), 
         width:wp('90'), 
         borderRadius:wp('2'), 
@@ -481,14 +505,14 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
 
-    submitButtonTextStyle:{ 
-        color: '#FFFFFF', 
+    reqToDiscardButtonTextStyle:{ 
+        color: '#ffffff', 
         fontSize:RFValue(14), 
         fontWeight: 'bold',
         fontFamily: 'Proxima Nova',
     },
 
-    cancelButtonBG:{
+    cancelButtonContainer:{
         alignItems:'center',
         justifyContent:'center',
         marginVertical:hp('3'),
@@ -500,5 +524,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'Proxima Nova',
     },
+
 
 });

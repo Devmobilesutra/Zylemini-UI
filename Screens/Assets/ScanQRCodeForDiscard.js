@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, ImageBackground, TouchableOpacity, ScrollView, Image,
-             Platform, Linking, PermissionsAndroid } from 'react-native';
+import {StyleSheet, View, Text, ImageBackground, TouchableOpacity, ScrollView, Image} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Actions } from 'react-native-router-flux';
-import { CameraKitCameraScreen, } from 'react-native-camera-kit';
+ import { CameraKitCameraScreen, } from 'react-native-camera-kit';
 
 
-export default class ScanQRCode extends Component {
+
+export default class ScanQRCodeForDiscard extends Component {
 constructor(props) {
     super(props);
     this.state = { 
@@ -16,16 +16,15 @@ constructor(props) {
     };
 }
 
- 
 openLink_in_browser = () => {
-  Linking.openURL(this.state.QR_Code_Value);
+  Linking.openURL(this.state.QR_Code_Value); 
 }
 
 onQR_Code_Scan_Done = (QR_Code) => {
   this.setState({ QR_Code_Value: QR_Code });
   this.setState({ Start_Scanner: false });
 }
- 
+
 open_QR_Code_Scanner=()=> {
   var that = this;
  
@@ -56,50 +55,9 @@ open_QR_Code_Scanner=()=> {
   }
   }
 
-  render() {
-    // if (!this.state.Start_Scanner) {
- 
-    //   return (
-    //       <View>
-    //     <ImageBackground
-    //              // source={require('../../Assets/Icons/android_BG.png')}
-    //          style={{backgroundColor:'grey',height:hp('70'),width:wp('100'), resizeMode: 'cover',  justifyContent: 'center',}}
-    //     > 
-    //     <ScrollView
-    //                 showsVerticalScrollIndicator={false}
-    //     >
-    //     <View style={styles.MainContainer}>
- 
-    //       <Text style={{ fontSize: 22, textAlign: 'center' }}>React Native Scan QR Code Example</Text>
- 
-    //       <Text style={styles.QR_text}>
-    //         {this.state.QR_Code_Value ? 'Scanned QR Code: ' + this.state.QR_Code_Value : ''}
-    //       </Text>
- 
-    //       {this.state.QR_Code_Value.includes("http") ?
-    //         <TouchableOpacity
-    //           onPress={this.openLink_in_browser}
-    //           style={styles.button}>
-    //           <Text style={{ color: '#FFF', fontSize: 14 }}>Open Link in default Browser</Text>
-    //         </TouchableOpacity> : null
-    //       }
- 
-    //       <TouchableOpacity
-    //         onPress={this.open_QR_Code_Scanner}
-    //         style={styles.button}>
-    //         <Text style={{ color: '#FFF', fontSize: 14 }}>
-    //           Open QR Scanner
-    //         </Text>
-    //       </TouchableOpacity>
-
-    //     </View>
-    //     </ScrollView>
-    //     </ImageBackground>
-    //     </View>
-    //   );
-    // }
-    return (
-        <View style={styles.container}>
+render() {
+       return (
+       <View style={styles.container}>
             <View style={styles.kitContainer}>
               <CameraKitCameraScreen
               style={{
@@ -120,7 +78,7 @@ open_QR_Code_Scanner=()=> {
             <View style={styles.buttonsContainer}>
                 {/* CONFIRM Button */}
                 <View style={styles.confirmButtonMainContainer}>
-                    <TouchableOpacity  onPress={() => Actions.AuditAssetStep2()} >
+                    <TouchableOpacity  onPress={() => Actions.DiscardAssetStep2()} >
                         <View style={styles.confirmButtonInnerContainer}>
                             <Text style={styles.confirmTextStyle}>
                                     CONFIRM
@@ -134,55 +92,7 @@ open_QR_Code_Scanner=()=> {
   }
 }
 
-// render() {
-//     return (
-        // <View>
-        // <ImageBackground
-        //         // source={require('../../Assets/Icons/android_BG.png')}
-        //     style={{backgroundColor:'grey',height:hp('70'),width:wp('100'), resizeMode: 'cover',  justifyContent: 'center',}}
-        // > 
-        //   <ScrollView
-        //             showsVerticalScrollIndicator={false}
-        //   >
-            
-        //     {/* <View style={{ flex: 1 }}> */}
-        //     {this.open_QR_Code_Scanner()}
-        //         <CameraKitCameraScreen
-        //             showFrame={true}
-        //             scanBarcode={true}
-        //             laserColor={'#FF3D00'}
-        //             frameColor={'#00C853'}
-        //             colorForScannerFrame={'black'}
-        //             onReadCode={event =>
-        //             this.onQR_Code_Scan_Done(event.nativeEvent.codeStringValue)
-        //             }
-        //         />
-        //     {/* </View> */}
-
-        //   </ScrollView>
-        //     <View>
-        //         {/* CONFIRM Button */}
-        //         <View style={styles.confirmButtonMainContainer}>
-        //             <TouchableOpacity  onPress={() => Actions.AuditAssetStep2()} >
-        //                 <View style={styles.confirmButtonInnerContainer}>
-        //                     <Text style={styles.confirmTextStyle}>
-        //                             CONFIRM
-        //                     </Text>
-        //                 </View>
-        //             </TouchableOpacity>
-        //         </View>
-        //     </View>
-        //  </ImageBackground>
-        // </View>
-
-
-//     );
-// }
-// }
-
-
 const styles = StyleSheet.create({
-
   container:{
     flex:1, 
     flexDirection:'column',
@@ -242,6 +152,4 @@ const styles = StyleSheet.create({
     //   width: 300,
     //   marginTop: 14
     // },
-
-
 });
