@@ -83,7 +83,7 @@ export default class RouteMain extends Component{
                     <Scene key="CreateNewOrderPreview" component={CreateNewOrderPreview} title="CreateNewOrderPreview" hideNavBar={true}/>
                     <Scene key="AddNewOutlet" component={AddNewOutlet} title="AddNewOutlet" />
 
-                    <Scene key="Shops" component={Shops} title="Shops" />
+                    <Scene key="Shops" component={Shops} title="Shops" hideNavBar={true}/>
                     <Scene key="AddNewShop" component={AddNewShop} title="Add New Party"/>
                     <Scene key="AddNewShopNext" component={AddNewShopNext} title="Add New Party"/>
                     <Scene key="ShopCardView" component={ShopCardView} title="Shops"/>

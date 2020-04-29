@@ -42,7 +42,8 @@ export default class ShopDetail extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            visible: '',    
+            visible: '',   
+            checkIn: false, 
         };
     }
 
@@ -51,8 +52,34 @@ export default class ShopDetail extends Component {
 applicablePopUp =  () => {
   const { navigation } = this.props;
      this.setState({ visible: true });
+      this.setState({ checkIn: true });
     // alert('hii')
+}
+
+checkInFuc =  () => {
+  if( this.state.checkIn == false ){
+    return(
+      <View style={styles.checkInLableBGStyle}>
+          <Text style={styles.checkInLabelTextStyle}>
+              CHECK IN
+          </Text>
+      </View> 
+    );
   }
+
+  else if( this.state.checkIn == true ) {
+     return(
+      <View style={styles.checkInLableAfterCheckingBGStyle}>
+          <Text style={styles.checkInLabelTextStyle}>
+              CHECK IN
+          </Text>
+      </View> 
+    )
+  }
+
+}
+
+
 render() {
     return (
       <View>
@@ -114,11 +141,12 @@ render() {
               </Dialog>
             </View>
  
-          <View style={styles.checkInLableBGStyle}>
+          {/* <View style={styles.checkInLableBGStyle}>
             <Text style={styles.checkInLabelTextStyle}>
                 CHECK IN
             </Text>
-         </View>
+         </View> */}
+         {this.checkInFuc()}
         </TouchableOpacity>
 
         <Image  style={styles.editIconStyle}
@@ -250,6 +278,16 @@ const styles = StyleSheet.create({
 
   checkInLableBGStyle:{
     backgroundColor: '#CC1167',
+    justifyContent:'center',
+    marginRight:hp('3'),
+    borderColor: '#CC1167',
+    height:hp('4'),
+    width:wp('23'),
+    borderRadius:wp('5'),
+  },
+
+  checkInLableAfterCheckingBGStyle:{
+    backgroundColor: 'red',
     justifyContent:'center',
     marginRight:hp('3'),
     borderColor: '#CC1167',

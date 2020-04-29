@@ -7,6 +7,9 @@ import { Dropdown } from 'react-native-material-dropdown';
 import Dash from 'react-native-dash';
 import { FloatingAction } from "react-native-floating-action";
 
+import ShopCardHeaderIcon from './ShopCardHeaderIcon';
+import ShopListHeaderIcon from './ShopListHeaderIcon';
+
 const data = [{
     value: 'Route 1',
     }, {
@@ -40,19 +43,36 @@ export default class Shops extends Component {
         this.state = { 
             listView: true ,  
             cardView: false ,  
+            myColor : 'blue',
         };
     }
-componentDidMount() {
+componentWillMount() {
+
+    this.props.navigation.setParams({
+      cardView: this.state.cardView
+    });
+
+    this.props.navigation.setParams({
+      listView: this.state.listView
+    });
+
+     this.props.navigation.setParams({
+      myColor: this.state.myColor
+    });
+
+
     this.props.navigation.setParams({
         handelCardView: this.cardViewFunction.bind(this)
     });
 
     this.props.navigation.setParams({
         handelListView: this.listViewFunction.bind(this)
-    })
+    });
+
     // this.props.navigation.setParams({
     //     handelcardIMG: this.cardIMG.bind(this)
-    // })
+    // });
+    
     // this.props.navigation.setParams({
     //     handellistIMG: this.listIMG.bind(this)
     // })
@@ -60,6 +80,7 @@ componentDidMount() {
     // this.props.navigation.setParams({ handelcardIMG: this.cardIMG});
     // this.props.navigation.setParams({ handellistIMG: this.listIMG});
 }
+
 
 cardViewFunction =  () => {
     this.setState({ 
@@ -76,6 +97,7 @@ listViewFunction = () => {
 }
 
 // cardIMG = () =>  {
+//        <ShopCardHeaderIcon cardView={this.state.cardView}/>
 //     if(this.state.cardView == true){
 //         return(
 //             <View>
@@ -132,24 +154,30 @@ static navigationOptions = ({ navigation }) => {
     headerTitleStyle: {
         color: '#fff'
     },
-    
+  
     headerRight: (
         <View style={{flexDirection:"row", alignItems:'center',justifyContent:'center',alignSelf:'center',}}>
             <TouchableOpacity  
                  onPress={ () => params.handelCardView() } 
             > 
-                <Image    style={{marginRight:hp('4'), height:hp('3'), width:wp('4'),}}
+
+            <ShopCardHeaderIcon cardView={params.cardView}/>
+                {/* <Image    style={{marginRight:hp('4'), height:hp('3'), width:wp('4'),}}
+                    //color = {params.myColor}
                     source = {require('../../Assets/Icons/Card_View.png')}
-                />
+                /> */}
                 {/* {params.handelcardIMG()} */}
+                
                 {/* {cardIMG()} */}
             </TouchableOpacity>
+
             <TouchableOpacity  
                  onPress={ () => params.handelListView() } 
             >  
-                <Image  style={{marginRight:hp('4'), height:hp('3'), width:wp('4'),}}  
+                 <ShopListHeaderIcon listView={params.listView}/>
+                {/* <Image  style={{marginRight:hp('4'), height:hp('3'), width:wp('4'),}}  
                     source = {require('../../Assets/Icons/List_View_Selected.png')}
-                />
+                /> */}
                 {/* {params.handellistIMG()} */}
                 {/* {listIMG()} */}
                 
@@ -229,7 +257,7 @@ cardListViewsView =  () => {
                         </View>
                         <View style={styles.imgBackContainerCard}>
                             <Image 
-                                style={styles.imageStylesCard} 
+                                style={styles.imageStylesCard}   
                                     source = {require('../../Assets/Icons/Shop_card_watermark.png')}/>
                         </View>
                         <View style= {styles.NCMContainerCard}>
@@ -272,6 +300,40 @@ render() {
         <ScrollView
             showsVerticalScrollIndicator={false}
         >
+            {/* <View>
+                <View style={{  flex:1,backgroundColor: '#210305', height:hp('8'), flexDirection:'row' }}>
+                    <View style={{flex:0.1, flexDirection:"column", alignItems:'flex-start',justifyContent:'center',alignSelf:'center',}}>
+                        <TouchableOpacity   onPress={() =>Actions.drawerMenu() }>  
+                            <Image  style={{marginLeft:wp('4'),}}
+                                source = {require('../../Assets/Icons/Back_White.png')}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{flex: 0.7, flexDirection:"column", alignItems:'flex-start',justifyContent:'center',alignSelf:'center',}}>
+                           <Text style={{  color: '#ffffff', fontSize:RFValue(18),  fontWeight: 'bold', 
+                                            marginTop:hp('0.5'), marginLeft: wp('6%'), fontFamily: 'Proxima Nova', }}>
+                                Shops
+                            </Text>
+                    </View>
+                    <View style={{flex:0.1, flexDirection:"column", alignItems:'flex-end',justifyContent:'center',alignSelf:'center',}}>
+                       <TouchableOpacity onPress={() =>this.cardViewFunction() }>
+                            {this.cardIMG()}
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{flex:0.1, flexDirection:"column", alignItems:'flex-end',justifyContent:'center',alignSelf:'center',}}>
+                        <TouchableOpacity onPress={() =>this.listViewFunction() }>
+                            {this.listIMG()}
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{flex:0.1, flexDirection:"column", alignItems:'flex-end',justifyContent:'center',alignSelf:'center',}}>
+                        <Image  style={{marginRight:hp('4'), height:hp('3'), width:wp('5'),}}  
+                                         source = {require('../../Assets/Icons/SearchHeader.png')}
+                        />
+                    </View>
+                </View>
+            </View> */}
+
+            
             {/* Header */}
             <View style = {styles.headerMainContainer}>
                 <Text style = {styles.todaysRouteTextStyle} >

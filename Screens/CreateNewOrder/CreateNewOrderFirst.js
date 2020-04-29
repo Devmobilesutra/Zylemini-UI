@@ -79,16 +79,16 @@ static navigationOptions = {
   //  headerLeft: <Icon  name="ios-arrow-round-back" size={20} color="white"    padding='20'  
   //               onPress={ () => { Actions.Dashboard() }}   />
 
-  headerLeft: (
-        <View style={{flexDirection:"row", alignItems:'center',justifyContent:'center',alignSelf:'center',}}>
-            <TouchableOpacity   onPress={() =>Actions.drawerMenu() }>  
-                <Image  style={{marginLeft:wp('4'),}}
-                    source = {require('../../Assets/Icons/Back_White.png')}
-                />
-            </TouchableOpacity>
+//   headerLeft: (
+//         <View style={{flexDirection:"row", alignItems:'center',justifyContent:'center',alignSelf:'center',}}>
+//             <TouchableOpacity   onPress={() =>Actions.drawerMenu() }>  
+//                 <Image  style={{marginLeft:wp('4'),}}
+//                     source = {require('../../Assets/Icons/Back_White.png')}
+//                 />
+//             </TouchableOpacity>
             
-        </View>
- )
+//         </View>
+//  )
                                
 }
 

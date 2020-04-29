@@ -11,7 +11,8 @@ const actions = [
     text: "Create New Order",
     color: 'transperent',
     name: "bt_create", 
-    position: 4,
+    position: 2,
+    
   },
   {
     text: "Accept Payment",
@@ -23,7 +24,7 @@ const actions = [
     text: "Take A Survey",
     color: 'transperent',
     name: "bt_survey", 
-    position: 2,
+    position: 4,
   },
   {
     text: "Audit Assets",
@@ -33,7 +34,6 @@ const actions = [
   },
 
 ];
-
 
 
 
@@ -138,25 +138,29 @@ render() {
                 </View>
                  <View style={{height:hp('10')}}></View>
             </ScrollView>
-                <FloatingAction
-                    color='#a10d59'
-                    actions={actions}
-                    buttonSize= {hp('9')}
-                    distanceToEdge = {10}
-                    // floatingIcon= {require('../../Assets/Icons/Floating.png')}
-                    // iconWidth={wp(20)}
-                    // iconHeight={hp(16)}
-                    iconWidth={wp(5)}
-                    iconHeight={hp(3)}
-                    shadow= 'null'
-                    overlayColor= '#221818'
-                    showBackground= {true}
-                    onPressItem={name => {
-                        // if(name = "bt_create"){ 
-                                Actions.CreateNewOrderFirst()
-                        // }
-                    }}
-                />
+                 <FloatingAction
+                color='#a10d59'
+                actions={actions}
+                buttonSize= {hp('9')}
+                distanceToEdge = {10}
+                // floatingIcon= {require('../../Assets/Icons/Floating.png')}
+                // iconWidth={wp(20)}
+                // iconHeight={hp(16)}
+                iconWidth={wp(5)}
+                iconHeight={hp(3)}
+                shadow= 'null'
+                overlayColor= '#221818'
+                showBackground= {true}
+                onPressItem={name => {
+                    if(name == "bt_assets"){ 
+                            Actions.AssetUpdate()
+                    }
+                    else if(name == "bt_create"){ 
+                            Actions.CreateNewOrderFirst()
+                    }
+                   
+                }}
+            />
          </ImageBackground>
         </View>       
         );

@@ -11,7 +11,7 @@ const actions = [
     text: "Create New Order",
     color: 'transperent',
     name: "bt_create", 
-    position: 4,
+    position: 2,
     
   },
   {
@@ -24,7 +24,7 @@ const actions = [
     text: "Take A Survey",
     color: 'transperent',
     name: "bt_survey", 
-    position: 2,
+    position: 4,
   },
   {
     text: "Audit Assets",
@@ -290,8 +290,11 @@ render() {
                 overlayColor= '#221818'
                 showBackground= {true}
                 onPressItem={name => {
-                    if(name = "bt_assets"){ 
+                    if(name == "bt_assets"){ 
                             Actions.AssetUpdate()
+                    }
+                    else if(name == "bt_create"){ 
+                            Actions.CreateNewOrderFirst()
                     }
                    
                 }}
