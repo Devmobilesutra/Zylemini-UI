@@ -112,7 +112,7 @@ open_QR_Code_Scanner=()=> {
                 frameColor={'grey'}
                 // colorForScannerFrame={'black'}
                 colorForScannerFrame = {'#221818'}
-                onReadCode={event =>
+                onReadCode={event =>                    
                   this.onQR_Code_Scan_Done(event.nativeEvent.codeStringValue)
                 }
               />

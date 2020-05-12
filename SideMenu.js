@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Actions } from 'react-native-router-flux';
 
 
@@ -24,6 +25,18 @@ export default class SideMenu extends Component {
 
                 {/* Header */}
                 <View style={styles.headerBackgrounContainer}>
+                    <View style={{flex:0.4, flexDirection: 'column', marginTop: hp('2')}}>
+                        <View style={{flexDirection:'row',alignItems:'center', justifyContent:'flex-end'}}>
+                            <Text style={{ fontSize:RFValue(13), fontWeight: 'bold', fontFamily: 'Proxima Nova', 
+                                        color: '#8C7878', marginRight:wp('3') }}>
+                                EDIT
+                            </Text>
+                            <TouchableOpacity onPress={() => Actions.drawerToggle()}>    
+                                <Image style={{marginRight:wp('3')}}
+                                    source={require('./Assets/Icons/Close.png')}/>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                     <View style={styles.headerContainer}>
                         <View style={styles.headerImgContainer}>
                             <Image style={styles.headerImgStyle}
@@ -77,8 +90,8 @@ export default class SideMenu extends Component {
 
                          <TouchableOpacity onPress={() => Actions.TabBarSurveys()}>                
                             <View style={styles.drawerNmaeImgContainer2}>
-                                <Image style={styles.drawerLabelImgStyle2}
-                                    source={require('./Assets/Icons/Shop_sidebar.png')}/>
+                                <Image style={styles.drawerLabelImgStyle3}
+                                    source={require('./Assets/Icons/SurveyDrawer.png')}/>
                                 <Text style={styles.drawerLabelStyle2}>
                                         Surveys
                                 </Text> 
@@ -136,13 +149,13 @@ const styles = StyleSheet.create({
     },
 
     headerBackgrounContainer: {
-        flex:0.35,
+        flex:0.40,
         backgroundColor:'#F8F4F4',
     },
 
     headerContainer: {
-        flex: 0.3, 
-        marginTop:hp('10'), 
+        flex: 0.4, 
+        // marginTop:hp('1'), 
         flexDirection:'row',
     },
 
@@ -212,6 +225,11 @@ const styles = StyleSheet.create({
     drawerLabelImgStyle2: {
         width: wp('6'), 
         height: hp('4'),
+    },
+
+    drawerLabelImgStyle3: {
+        width: wp('6.5'), 
+        height: hp('4.5'),
     },
 
     drawerLabelStyle2: {
