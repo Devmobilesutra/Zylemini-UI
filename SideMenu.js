@@ -68,12 +68,23 @@ export default class SideMenu extends Component {
                                 </Text>  
                             </View>
                         </TouchableOpacity>
+
                         <TouchableOpacity onPress={() => Actions.Shops()}>                
                             <View style={styles.drawerNmaeImgContainer2}>
                                 <Image style={styles.drawerLabelImgStyle2}
                                     source={require('./Assets/Icons/Shop_sidebar.png')}/>
                                 <Text style={styles.drawerLabelStyle2}>
                                         {item.shops}
+                                </Text> 
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={() => Actions.DataCollectionStep1()}>                
+                            <View style={styles.drawerNmaeImgContainer2}>
+                                <Image style={styles.drawerLabelImgStyle2}
+                                    source={require('./Assets/Icons/Shop_sidebar.png')}/>
+                                <Text style={styles.drawerLabelStyle2}>
+                                        Data Collection
                                 </Text> 
                             </View>
                         </TouchableOpacity>
@@ -88,6 +99,26 @@ export default class SideMenu extends Component {
                             </View>
                         </TouchableOpacity>
 
+                        <TouchableOpacity>                
+                            <View style={styles.drawerNmaeImgContainer2}>
+                                <Image style={styles.drawerLabelImgStyle2}
+                                    source={require('./Assets/Icons/Orders.png')}/>
+                                <Text style={styles.drawerLabelStyle2}>
+                                        Orders
+                                </Text> 
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>                
+                            <View style={styles.drawerNmaeImgContainer2}>
+                                <Image style={styles.drawerLabelImgStyle2}
+                                    source={require('./Assets/Icons/Payment.png')}/>
+                                <Text style={styles.drawerLabelStyle2}>
+                                        Payments
+                                </Text> 
+                            </View>
+                        </TouchableOpacity>
+
                          <TouchableOpacity onPress={() => Actions.TabBarSurveys()}>                
                             <View style={styles.drawerNmaeImgContainer2}>
                                 <Image style={styles.drawerLabelImgStyle3}
@@ -97,39 +128,103 @@ export default class SideMenu extends Component {
                                 </Text> 
                             </View>
                         </TouchableOpacity>
+
+                         <TouchableOpacity>                
+                            <View style={styles.drawerNmaeImgContainer2}>
+                                <Image style={styles.drawerLabelImgStyle2}
+                                    source={require('./Assets/Icons/Schemes_drawer.png')}/>
+                                <Text style={styles.drawerLabelStyle2}>
+                                        Schemes
+                                </Text> 
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>                
+                            <View style={styles.drawerNmaeImgContainer2}>
+                                <Image style={styles.drawerLabelImgStyle2}
+                                    source={require('./Assets/Icons/Resources.png')}/>
+                                <Text style={styles.drawerLabelStyle2}>
+                                        Resources
+                                </Text> 
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>                
+                            <View style={styles.drawerNmaeImgContainer2}>
+                                <Image style={styles.drawerLabelImgStyle2}
+                                    source={require('./Assets/Icons/Reports.png')}/>
+                                <Text style={styles.drawerLabelStyle2}>
+                                        Reports
+                                </Text> 
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>                
+                            <View style={styles.drawerNmaeImgContainer2}>
+                                <Image style={styles.drawerLabelImgStyle2}
+                                    source={require('./Assets/Icons/Help.png')}/>
+                                <Text style={styles.drawerLabelStyle2}>
+                                        Help
+                                </Text> 
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>                
+                            <View style={styles.drawerNmaeImgContainer2}>
+                                <Image style={styles.drawerLabelImgStyle2}
+                                    source={require('./Assets/Icons/Settings.png')}/>
+                                <Text style={styles.drawerLabelStyle2}>
+                                        Settings
+                                </Text> 
+                            </View>
+                        </TouchableOpacity>
+
+                        <View style={{marginTop:hp('3')}}></View>
                     </ScrollView>
                 </View>
 
                 {/* Footer Styles */}
                 <View  style={styles.footerMainContainer}>
                     <View style={styles.zyleminiTextContainer}>
-                        <Text style={styles.zylememiniTextStyle}>ZYLEMINI</Text>
+                        <Text style={styles.zylememiniTextStyle}>ZYLEMINI +</Text>
                     </View>
 
                     <View style= {styles.middleLineTextContainer}>
+
+                        
                         <View style= {styles.PPtextContainer}>
-                            <Text  style = {styles.PPTextStyle}>
-                                Privacy Policy 
-                            </Text>
+                            <TouchableOpacity onPress={() => Actions.PrivacyPolicy()}>
+                                <Text  style = {styles.PPTextStyle}>
+                                    Privacy Policy 
+                                </Text>
+                            </TouchableOpacity>
                         </View>
-
+                        
+                        
                         <View style= {styles.SNTextContainer}>
-                            <Text  style = {styles.SNTextStyle}>
-                                Security Notice
-                            </Text>
+                            <TouchableOpacity>
+                                <Text  style = {styles.SNTextStyle}>
+                                    Security Notice
+                                </Text>
+                            </TouchableOpacity>
                         </View>
 
+                       
                         <View style= {styles.aboutTextContainer}>
-                            <Text  style = {styles.aboutTextStyle}>
-                                About
-                            </Text>
+                            <TouchableOpacity onPress={() => Actions.AboutUs()}>
+                                <Text  style = {styles.aboutTextStyle}>
+                                    About
+                                </Text>
+                            </TouchableOpacity>
                         </View>
+                       
+
                     </View>
                 </View>
 
                 <View >
                     <Text style={styles.copyRightTextStyle}>
-                        opyright 2019 Smile Automation Pvt Ltd.
+                        Copyright 2019 Smile Automation Pvt Ltd.
                     </Text>
                 </View>
             </View>
@@ -293,7 +388,7 @@ const styles = StyleSheet.create({
         flex: 0.5, 
         flexDirection:'column', 
         alignItems:'flex-end', 
-        marginRight:wp('5'), 
+        marginRight:wp('7'), 
     },
 
     aboutTextStyle: {  

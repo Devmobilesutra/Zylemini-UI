@@ -8,6 +8,8 @@ import { Root } from 'native-base';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import SideMenu from './SideMenu';
+import PrivacyPolicy from './Screens/DrawerFiles/PrivacyPolicy';
+import AboutUs from './Screens/DrawerFiles/AboutUs';
 
 import SplashScreen from './Screens/SplashScreenComponent/SplashScreen'
 import Login from './Screens/LoginComponent/Login';
@@ -63,6 +65,11 @@ import History from './Screens/Surveys/History';
 import DetailViewSurveyBrowser from './Screens/Surveys/DetailViewSurveyBrowser';
 
 
+import DataCollectionStep1 from './Screens/DataCollection/DataCollectionStep1';
+import DataCollectionStep2 from './Screens/DataCollection/DataCollectionStep2';
+import DataCollectionStep3 from './Screens/DataCollection/DataCollectionStep3';
+
+
 
 
 
@@ -82,6 +89,9 @@ export default class RouteMain extends Component{
                     <Scene key="FilterPage" component={FilterPage} title="FilterPage" hideNavBar={true}/>
                     <Scene key="CreateNewOrderPreview" component={CreateNewOrderPreview} title="CreateNewOrderPreview" hideNavBar={true}/>
                     <Scene key="AddNewOutlet" component={AddNewOutlet} title="AddNewOutlet" />
+
+                    <Scene key="PrivacyPolicy" component={PrivacyPolicy} title="PrivacyPolicy" />
+                    <Scene key="AboutUs" component={AboutUs} title="AboutUs" />
 
                     <Scene key="Shops" component={Shops} title="Shops" hideNavBar={true}/>
                     <Scene key="AddNewShop" component={AddNewShop} title="Add New Party"/>
@@ -103,6 +113,11 @@ export default class RouteMain extends Component{
                     <Scene key="AddNewAssetStep2" component={AddNewAssetStep2} title="Add Asset : Step 3/3" />
 
                     <Scene key="DetailViewSurveyBrowser" component={DetailViewSurveyBrowser} title="Survey Name" />
+
+
+                    <Scene key="DataCollectionStep1" component={DataCollectionStep1} title="Data Collection : Step 1/3" />
+                    <Scene key="DataCollectionStep2" component={DataCollectionStep2} title="Data Collection : Step 2/3" />
+                    <Scene key="DataCollectionStep3" component={DataCollectionStep3} title="Data Collection : Step 3/3" />
 
                     <Drawer
                           hideNavBar
@@ -139,8 +154,8 @@ export default class RouteMain extends Component{
                             scrollEnabled
                             showLabel={true}
                             tabBarPosition='top'  
-                            tabStyle={{width:wp('21.1')}}
-                            labelStyle={{ fontFamily:'Proxima Nova',width:wp(15), height:hp('3'),}}
+                            tabStyle={{width:wp('21')}}
+                            labelStyle={{ fontFamily:'Proxima Nova',width:wp(18), height:hp('3'),}}
                             indicatorStyle={{ backgroundColor: '#CC1167', height:hp('0.8') }}
                             activeBackgroundColor="white"
                             // lazy
@@ -227,7 +242,7 @@ export default class RouteMain extends Component{
                             showLabel={true}
                             tabBarPosition='top'  
                             tabStyle={{width:wp('50')}}
-                            labelStyle={{ fontFamily:'Proxima Nova',width:wp(30), height:hp('3'),}}
+                            labelStyle={{ fontFamily:'Proxima Nova',width:wp(35), height:hp('3'),}}
                             indicatorStyle={{ backgroundColor: '#FFFFFF', height:hp('0.5'),
                                                 alignSelf:'center' }}
                             activeBackgroundColor="white"
@@ -236,7 +251,7 @@ export default class RouteMain extends Component{
                             headerMode="screen"
                             wrap={false}
                 >
-                    <Scene key='AvailableSurveys' initial={true} component={AvailableSurveys} title='AvailableSurveys'  hideNavBar={true} />
+                    <Scene key='AvailableSurveys' initial={true} component={AvailableSurveys} title='Available Surveys'  hideNavBar={true} />
                     <Scene key='History'  component={History}  title='History'  hideNavBar={true}  />
                 </Scene>
              
